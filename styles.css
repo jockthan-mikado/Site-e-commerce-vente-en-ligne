@@ -1,0 +1,272 @@
+body{
+	font-size : 15px;
+}
+
+div#top{
+	clear : both;
+	height : 70px;
+	font-family : arial;
+	
+}
+div#top nav{
+	width: 70%;
+    margin-left: 395px;
+	font-family : arial;
+}
+
+div#menu h3 li{
+	margin-bottom : 50px;
+	font-family : arial;
+}
+
+div#design {
+	border-top : 1px solid black;
+}
+
+
+div#design span {
+	height: 100px;
+	
+}
+div#menu h3 li{
+	margin-bottom : 50px;
+	font-family : arial;
+	border-bottom : 5px solid #ADD8E6;
+}
+div#content{
+	padding-left : 100px;
+	margin-left: 360px;
+	font-family : arial;
+}
+
+div#top nav ul{
+	
+	margin : 0;
+	list-style-type : none;
+	display: flex;
+	font-family : arial;
+}
+
+div#top nav li {
+	margin-right : 100px;
+	float : right;
+	font-family : arial;
+	list-style-type : none;
+}
+
+div#top nav ul li{
+	width : 100px;
+	text-align : center;
+	list-style-type : none;
+	font-family : arial;
+}
+ul{    
+list-style-type: none;
+}
+
+th , td{
+	border: 1px solid black; padding: 15px; text-align: center;
+	font-family : arial;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+	
+}
+.checked{
+	font-size : 20px;
+	text-align : center;
+}
+
+.added{
+	font-size : 15px;
+}
+
+.overlay-image1 {
+    position: absolute;
+    top: 75.7%;
+    left: 60.3%;
+    width: 4%; 
+    width: 4%; 
+	background-attachment: fixed;	
+}
+ 
+.overlay-image2 {
+    position: absolute;
+    top: 75.7%;
+    left: 81.1%;
+    width: 4%; 
+	background-attachment: fixed;
+}
+
+ 
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    width: 30px;
+    height: 30px;
+	border: 1px solid black;
+    border-radius: 50%;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin: 0 5px;
+	justify-content: center;
+}
+
+.pagination .next {
+    width: 150px;
+    height: auto;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 20px;
+	font-size : 15px;
+  }
+  
+.shipping{
+	border: 1px solid black;
+	padding-right : 220px;
+	padding-bottom : 10px;
+	padding-top : 10px;
+	padding-left : 10px;
+	width : 100%;
+}
+
+
+
+.discount{
+	border: 1px solid black;
+	padding-right : 280px;
+	padding-bottom : 10px;
+	padding-top : 10px;
+	padding-left : 10px;
+	width : 100%;
+}
+
+.total{
+	border: 1px solid black;
+	padding-right : 320px;
+	padding-bottom : 10px;
+	padding-top : 10px;
+	padding-left : 10px;
+	width : 100%;
+}
+
+#coupon {
+	width:100%;
+}
+#country {
+	width:100%;
+}
+#state {
+	width:100%;
+}
+#zip {
+	width:100%;
+}
+
+.price-slider {
+    width: 100% ;
+    margin: 30px;
+    position: relative;
+}
+
+#price-slider {
+   
+	width: 70%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background-color: #ddd;
+    outline: none;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+#price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 3px solid #1E90FF;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+
+#min-price, #max-price {
+    display: inline-block;
+    width: 38%;
+    margin: 10px;
+}
+  
+  
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(9, 25px);
+    
+}
+
+.color-option {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.barre_menu{
+	border : 1px solid #CDD1D5;
+	border-bottom :6px solid #CDD1D5;
+	font-family: arial;
+}
+
+.shop{
+width : 100%;
+padding : 10px;
+background-color : #CDD1D5;
+}
+
+.categorie{
+	margin : 26px;
+}
+
+.price{
+	margin : 26px;
+}
+
+.color{
+	margin : 26px;
+}
+
+.color-palette{
+	margin : 26px;
+}
+
+.brand{
+	margin : 26px;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category {
+    cursor: pointer;
+}
+
+.category-content {
+    display: none;
+    font-family : arial;
+}
+
