@@ -295,10 +295,12 @@ include("conn.php");?>
 								while ($row = mysqli_fetch_assoc($result)) {
 									$html .= '
 									<div class="col-md-4 mb-4" >
-										<div class="product card" >
+										<div class="product mt-3" >
 											<div class="card-body">
-												<img class="card-img-top" width="100%" height="200" src="' . $row['link'] . '" alt="' . $row['link'] . '">
-												<p class="card-text">Article: ' . $row['name'] . '</p>
+												<div class="image-container">
+													<img class="card-img-top" width="100%" height="200" src="' . $row['link'] . '" alt="' . $row['link'] . '">
+												</div>
+													<p class="card-text">Article: ' . $row['name'] . '</p>
 												<p class="card-text">Description: ' . $row['description'] . '</p>
 												<p class="card-text">marque: ' . $row['marque'] . '</p>
 												<p class="card-text">Prix: ' . $row['price'] . ' €</p>
@@ -577,6 +579,24 @@ include("conn.php");?>
 
 				xhr.send();
 			}
+
+
+			document.addEventListener('DOMContentLoaded', function() {
+				const imageContainers = document.querySelectorAll('.image-container');
+
+				imageContainers.forEach(function(container) {
+					const image = container.querySelector('img');
+
+					container.addEventListener('mouseover', function() {
+						image.classList.add('zoom-image');
+					});
+
+					container.addEventListener('mouseout', function() {
+						image.classList.remove('zoom-image');
+					});
+				});
+			});
+
 		</script>
 		
 
