@@ -303,7 +303,7 @@ include("conn.php");?>
 												<p class="card-text">marque: ' . $row['marque'] . '</p>
 												<p class="card-text">Prix: ' . $row['price'] . ' €</p>
 											</div>
-											<div class="rating" style="color: #509FF3; text-align: left; margin-left: 10px;">
+											<div class="rating  vignette" style="color: #509FF3; text-align: left; margin-left: 10px;">
 												<span class="star">&#9733;</span>
 												<span class="star">&#9733;</span>
 												<span class="star">&#9733;</span>
@@ -326,11 +326,18 @@ include("conn.php");?>
 								echo $html;
 								?>
 								<?php
+								$category = isset($_GET['category']) ? $_GET['category'] : '';
+								$type = isset($_GET['type']) ? $_GET['type'] : '';
 								// Pagination
-								$query = "SELECT COUNT(*) as total FROM products";
-								// if (!empty($category)) {
-								// 	$query .= " WHERE categorie = '$category'";
-								// }
+								$query = "SELECT COUNT(*) as total FROM products p
+								LEFT JOIN pictures pic ON p.id = pic.product_id ";
+								
+								if (!empty($category)) {
+									$query .= " WHERE p.category_id = (SELECT id FROM categories WHERE name =  '$category')";	
+								}
+								if (!empty($type)) {
+									$query .= "AND p.type_categorie = '$type'";
+								}
 								$result = mysqli_query($conn, $query);
 								$row = mysqli_fetch_assoc($result);
 								$total_items = $row['total'];
@@ -338,9 +345,6 @@ include("conn.php");?>
 								$total_pages = ceil($total_items / $items_per_page);
 								
 								?>
-
-								
-
 								<?php
 								mysqli_close($conn);
 								?>
@@ -359,36 +363,48 @@ include("conn.php");?>
 			</div>
 
 			<div class="row">
-				<div class="col-md-12 text-center mt-5 ">
+				<div class="col-md-12 text-center mt-5">
 					<ul class="pagination">
+						<?php
+						$category = isset($_GET['category']) ? $_GET['category'] : '';
+						$type = isset($_GET['type']) ? $_GET['type'] : '';
+						$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 						
-								<?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-								<a href="?page=<?php echo $i . '&category=' . $category; ?>"><li><?php echo $i; ?></li></a>
-								<?php } ?>
-						
-						<li class="next" href="#">Next Page</li>
+						// Afficher les trois premiers chiffres
+						for ($i = 1; $i <= min(3, $total_pages); $i++) {
+						?>
+							<li><a href="?page=<?php echo $i . '&category=' . $category . '&type='.$type ; ?>"><?php echo $i; ?></a></li>
+						<?php
+						}
+						// Si le nombre total de pages est supérieur à 3, afficher le bouton "Next"
+						if ($total_pages > 3) {
+						?>
+							<li class="next"><a href="?page=<?php echo min($total_pages, $current_page + 1) . '&category=' . $category .'&type='.$type ; ; ?>">Next Page</a></li> 
+							
+						<?php
+						}
+						?>
 					</ul>
-						
-						
 				</div>
 			</div>
+
 
 			<div>
 				<footer>
 					<div class="row ">
-				<div class="col-md-3">
-					<img src="images/img-14.png">
-				</div>
-				<div class="col-md-3 ">
-					<img src="images/img-15.png">
-				</div>
-				<div class="col-md-3 ">
-					<img src="images/img-16.png">
-				</div>
-				<div class="col-md-3 ">
-					<img src="images/img-17.png">
-				</div>
-			</div>
+						<div class="col-md-3">
+							<img src="images/img-14.png">
+						</div>
+						<div class="col-md-3 ">
+							<img src="images/img-15.png">
+						</div>
+						<div class="col-md-3 ">
+							<img src="images/img-16.png">
+						</div>
+						<div class="col-md-3 ">
+							<img src="images/img-17.png">
+						</div>
+					</div>
 					<div class="row">
 
 						<div class="col-md-8">
