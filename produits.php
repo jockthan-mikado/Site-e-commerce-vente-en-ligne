@@ -73,9 +73,9 @@ include("conn.php");?>
 
 				<div class="col-md-3">
 					<div class="input-group">
-						<input type="text" class="form-control">
-						<span class="input-group-text" id="basic-addon2"><img
-								src="images\img-02.png" /></span>
+						<input type="text" class="form-control" id="type-input" list="suggestions">
+						<datalist id="suggestions"></datalist>
+						<span class="input-group-text" id="basic-addon2"><img src="images\img-02.png" /></span>
 					</div>
 				</div>
 			</div>
@@ -596,6 +596,39 @@ include("conn.php");?>
 					});
 				});
 			});
+
+
+
+			document.addEventListener('DOMContentLoaded', function() {
+			const typeInput = document.getElementById('type-input');
+			const suggestionsDatalist = document.getElementById('suggestions');
+
+			typeInput.addEventListener('input', function() {
+				const userInput = typeInput.value;
+
+				// Envoyer une requête au serveur pour obtenir les suggestions
+				fetch('obtenir_suggestions.php') // Le chemin vers votre script PHP
+					.then(response => response.json())
+					.then(data => {
+						const filteredSuggestions = data.filter(suggestion =>
+							suggestion.type_categorie.toLowerCase().includes(userInput.toLowerCase()) ||
+							suggestion.name.toLowerCase().includes(userInput.toLowerCase())
+						);
+
+						// Remplacer le contenu du datalist avec les suggestions filtrées
+						suggestionsDatalist.innerHTML = '';
+						filteredSuggestions.forEach(suggestion => {
+							const option = document.createElement('option');
+							option.value = suggestion.type_categorie + '  ' + suggestion.name;
+							suggestionsDatalist.appendChild(option);
+						});
+					})
+					.catch(error => {
+						console.error('Erreur lors de la récupération des suggestions', error);
+					});
+			});
+		});
+
 
 		</script>
 		
