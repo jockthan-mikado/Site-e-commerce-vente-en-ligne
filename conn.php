@@ -1,9 +1,14 @@
 <?php
-    // Connexion à la base de données
+    //Connexion à la base de données
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "boutique";
+
+    // $servername = "mysql-mikado.alwaysdata.net";
+    // $username = "mikado";
+    // $password = "MolimoSantu26'";
+    // $dbname = "mikado_boutique";
 
     // Créer la connexion
     $conn = new mysqli($servername, $username, $password, $dbname);
