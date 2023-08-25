@@ -54,9 +54,9 @@ include("conn.php");?>
 			<div class="row mt-3 border-bottom pb-4">
 
 				<div class="col-md-3">
-                    <div class="col-md-3">
-                        <a href="produits.php"><img src="images/logo.png" /></a>
-                    </div>
+				<div class="col-md-3">
+					<a href="produits.php"><img src="images/logo.png" /></a>
+				</div>
 				</div>
 				<div class="col-md-6">
 					<div id="top">
@@ -89,7 +89,7 @@ include("conn.php");?>
 				</div>
 			</div>
 				
-			<div class="row">
+			<div class="row"   >
 				<div class="col-md-3  mt-3 ">
 					<div class ="barre_menu" id="menu"> 
 						<div  class="shop" id="shop">
@@ -116,7 +116,7 @@ include("conn.php");?>
 								?> 
 
 								<ul class="category mt-3">
-									<a class="nav-link mb-3" onclick="toggleCategory('category<?php echo $i; ?>')"><?php echo $categorieProduit; ?></a>
+								<a class="nav-link mb-3" onclick="toggleCategory('category<?php echo $i; ?>')"><?php echo $categorieProduit; ?></a>
 									<?php
 										// Récupérer les sous catégories pour cette catégorie
 										$sql_type_categorie = "SELECT DISTINCT p.`type_categorie`
@@ -144,20 +144,17 @@ include("conn.php");?>
 
 							</div>										
 							<?php } ?>
-							<script>
-								function toggleCategory(categoryId) {
-									const contentElement = document.getElementById(categoryId + '-content');
-									contentElement.style.display = contentElement.style.display === 'block' ? 'none' : 'block';
-								}
-							</script>
+						<script>
+							function toggleCategory(categoryId) {
+								const contentElement = document.getElementById(categoryId + '-content');
+								contentElement.style.display = contentElement.style.display === 'block' ? 'none' : 'block';
+							}
+						</script>
 							
 						</div>
 						
 						
-						<div class="price border-bottom">
-							<span><h5>PRICE</h5></span>
-						</div>
-
+						<div class="price border-bottom"<span><h5>PRICE</h5></span></div>
 						<div class="price-slider ">
 							<input type="range" id="price-slider" min="100" max="10000" step="1" value="50">
 						
@@ -217,30 +214,29 @@ include("conn.php");?>
 								?>
 							</div>
 						</div>
+
 					</div>
+					
 				</div>
 				<div class="col-md-9" >
-					<div class="row">
-						<img src="images/banner.png">
-					</div>
-					<div class="row pb-2">
-						<div class="col-6 mt-3  border-bottom">
-							<p>
-								<?php	$query = "SELECT COUNT(*) as total FROM products";
+					<div class="row"><img src="images/banner.png"></div>
+						<div class="row pb-2">
+							<div class="col-6 mt-3  border-bottom">
+								<p><?php	$query = "SELECT COUNT(*) as total FROM products";
+				
 								$result = mysqli_query($conn, $query);
 								$row = mysqli_fetch_assoc($result);
 								$total_items = $row['total']; 
-								echo $total_items ?> Article(s)
-							</p>
-						</div>
-						<div class="col-md-6 mt-3  border-bottom">
-							<img src="images/img-04.png">
-							<img src="images/img-05.png">
-							<img src="images/img-06.png">
-							<img src="images/img-07.png">
-						</div>
+								echo $total_items ?> Article(s)</p>
+							</div>
+							<div class="col-md-6 mt-3  border-bottom">
+								<img src="images/img-04.png">
+								<img src="images/img-05.png">
+								<img src="images/img-06.png">
+								<img src="images/img-07.png">
+							</div>
 
-						<div class="row pb-2">
+							<div class="row  pb-2">
 							<?php
 								// Récupération de la catégorie et du type sélectionnés
 								$minValue = isset($_GET['min']) ? $_GET['min'] : '';
@@ -302,16 +298,14 @@ include("conn.php");?>
 										<div class="product mt-3" >
 											<div class="card-body">
 												<div class="image-container">
-													<img class="card-img-top" width="160px" height="206px" src="' . $row['link'] . '" alt="' . $row['link'] . '">
+													<img class="card-img-top" width="100%" height="200" src="' . $row['link'] . '" alt="' . $row['link'] . '">
 												</div>
-												<div class="pt-3">
-													<p class="card-text text-center">Article : ' . $row['name'] . '</p>
-													<p class="card-text text-center">Description : ' . $row['description'] . '</p>
-													<p class="card-text text-center">marque : ' . $row['marque'] . '</p>
-													<p class="card-text text-center">Prix : ' . $row['price'] . ' €</p>
-												</div>
+													<p class="card-text">Article: ' . $row['name'] . '</p>
+												<p class="card-text">Description: ' . $row['description'] . '</p>
+												<p class="card-text">marque: ' . $row['marque'] . '</p>
+												<p class="card-text">Prix: ' . $row['price'] . ' €</p>
 											</div>
-											<div class="rating  vignette text-center" style="color: #509FF3; text-align: left; margin-left: 10px;">
+											<div class="rating  vignette" style="color: #509FF3; text-align: left; margin-left: 10px;">
 												<span class="star">&#9733;</span>
 												<span class="star">&#9733;</span>
 												<span class="star">&#9733;</span>
@@ -357,11 +351,11 @@ include("conn.php");?>
 								mysqli_close($conn);
 								?>
 						</div>
-
 						<div class="col-md-12">
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			
 
@@ -478,7 +472,7 @@ include("conn.php");?>
 		</div>
 		<script>
 
-$(document).ready(function() {
+			$(document).ready(function() {
 				$(".add-to-cart").click(function() {
 					var productId = $(this).data("product-id");
 					$.ajax({
