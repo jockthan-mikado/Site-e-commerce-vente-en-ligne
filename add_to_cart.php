@@ -24,7 +24,8 @@ if (isset($_POST['product_id'])) {
 
         // Vérifier si le produit est déjà dans le panier
         if (array_key_exists($productId, $_SESSION['cart'])) {
-            $_SESSION['cart'][$productId]['quantite']++;
+            
+            $_SESSION['cart'][$productId]['quantity']++;
         } else {
             $_SESSION['cart'][$productId] = [
                 'name' => $product['name'],
@@ -37,4 +38,5 @@ if (isset($_POST['product_id'])) {
         echo count($_SESSION['cart']);
     }
 }
+
 ?>

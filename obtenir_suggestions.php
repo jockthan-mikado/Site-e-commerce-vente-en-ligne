@@ -17,6 +17,7 @@ if ($resultCategories) {
             'name' => $row['name']
         );
     }
+    // var_dump($suggestions);
 } else {
     echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
 }
@@ -24,4 +25,3 @@ if ($resultCategories) {
 // Supprimer les doublons et renvoyer les suggestions au format JSON
 $suggestions = array_values(array_unique($suggestions, SORT_REGULAR)); // Assurez-vous que les indices du tableau sont réinitialisés
 echo json_encode($suggestions);
-?>
