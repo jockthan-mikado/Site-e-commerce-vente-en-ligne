@@ -6,69 +6,23 @@
 <head>
     <meta charset="UTF-8">
     <title>M2GPI2021 – Projet WEB – MIKADO KINSHIERE Jockthan</title>
-    <meta name="description" content="votre site ou e-commerce sur mesure : conseil, conception, design, réalisation et référencement PRO. Votre catalogue en temps réel sur les places de marché." />
+    <meta name="description" content="Ce site e-commerce est un exercice d'apprentissage" />
     <meta name="keyword" content="site, internet, e-commerce, logiciel, place de marché" />
 
     <!-- <link rel='stylesheet' href='stylcss' type='text/css' media='all' /> -->
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                Shop by Phone <b>(01) 234 456 SM </b><a href="#"> Live Chat With Us</a>
-            </div>
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4 text-end">
-                <span class="dropdown">
-                    <button class="btn btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #509FF3;">
-                        My account
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </span>
-
-                <span class="dropdown"> <a href="cart.php"><button class="btn btn dropdown-toggle   " type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #509FF3;">| My cart
-                            <span class="cart-items-count"></span> </button></a></span>
-            </div>
-        </div>
-
-        <div class="row mt-3 border-bottom pb-4">
-
-            <div class="col-md-3 ">
-                <img src="images/logo.png" />
-            </div>
-            <div class="col-md-6">
-                <div id="top">
-                    <div class="navbar">
-                        <a class="nav-link active" aria-current="page" href="#">OFFICE</a>
-                        <a class="nav-link" href="#">MULTIMEDIA</a>
-                        <a class="nav-link" href="#">DESIGN</a>
-                        <a class="nav-link disabled">DEVELOPER</a>
-                        <a class="nav-link disabled">UTILITIES</a>
-                        <a class="nav-link disabled">GAMES</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="type-input" list="suggestions">
-                    <datalist id="suggestions"></datalist>
-                    <span class="input-group-text" id="basic-addon2"><img src="images\img-02.png" /></span>
-                </div>
-            </div>
-        </div>
+        <?php
+        include('header.php');
+        ?>
 
         <div class="row mt-4">
             <div class="col-md-12">
@@ -153,7 +107,7 @@
 
                         <div class="price border-bottom">
                             <span>
-                                <h5>PRICE</h5>
+                                <h5 class="font-weight-bold">PRICE</h5>
                             </span>
                         </div>
                         <div class="price-slider ">
@@ -212,7 +166,7 @@
                                     $marque = $row['marque'];
                                 ?>
                                     <li style="list-style-type: none;">
-                                        <input type="checkbox" name="brand" value="<?php echo $marque; ?>">
+                                        <input class="form-check-input brand-checkbox" type="checkbox" name="brand" value="<?php echo $marque; ?>">
                                         <?php echo $marque; ?> (<?php echo getCountByMarque($marque); ?>)
                                     </li>
                                 <?php
@@ -379,289 +333,32 @@
                         // Afficher les trois premiers chiffres
                         for ($i = 1; $i <= min(3, $total_pages); $i++) {
                         ?>
-                            <li><a href="?page=<?php echo $i . '&category=' . $category . '&type=' . $type; ?>"><?php echo $i; ?></a>
+                            <li><a href="?page=<?php echo $i . '&category=' . $category . '&type=' . $type; ?>" style="text-decoration: none;"><?php echo $i; ?></a>
                             </li>
                         <?php
                         }
                         // Si le nombre total de pages est supérieur à 3, afficher le bouton "Next"
                         if ($total_pages > 3) {
                         ?>
-                            <li class="next"><a href="?page=<?php echo min($total_pages, $current_page + 1) . '&category=' . $category . '&type=' . $type;; ?>">Next
-                                    Page</a></li>
+                            <li class="next"><a  href="?page=<?php echo min($total_pages, $current_page + 1) . '&category=' . $category . '&type=' . $type;; ?>" style="text-decoration: none;">Next
+                            Page</a></li>
                         <?php
                         }
                         ?>
                     </ul>
                 </div>
             </div>
-            <div>
-                <footer>
-                    <div class="row ">
-                        <div class="col-md-3">
-                            <img src="images/img-14.png">
-                        </div>
-                        <div class="col-md-3 ">
-                            <img src="images/img-15.png">
-                        </div>
-                        <div class="col-md-3 ">
-                            <img src="images/img-16.png">
-                        </div>
-                        <div class="col-md-3 ">
-                            <img src="images/img-17.png">
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <!-- <div class="col-md-2">
-
-						</div> -->
-                        <div class="col-md-8">
-                            <img src="images/img-27.png">
-                        </div>
-                        <!-- <div class="col-md-2">
-
-						</div> -->
-
-                    </div>
-
-                </footer>
-            </div>
-            <div class="row mt-3 border-bottom pb-4">
-                <!-- <div class="row " class="bottom-border"> -->
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="images/img-19.png" alt="Facebook">Facebook
-                        </div>
-                        <div class="col-md-3">
-                            <img src="images/img-20.png" alt="Twitter">Twitter
-                        </div>
-                        <div class="col-md-3">
-                            <img src="images/img-21.png" alt="Youtube"> Youtube
-                        </div>
-                        <div class=" col-md-3">
-                            <img src="images/img-22.png" alt="RSS Feed"> RSS Feed
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4 ">
-                    <div class="row">
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6 text-end">
-                            <img src="images/img-25.png" alt>
-
-                            <img src="images/img-26.png" alt>
-
-                            <img src="images/img-23.png" alt>
-
-                            <img src="images/img-24.png" alt>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!---->
-            <div class="row mt-3 mb-4">
-                <div class="col-md-6">
-                    2013 SoftMarket Mangento Store by emthemes.com
-                </div>
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-3 text-end">
-
-                    <span class="dropdown">
-                        EN
-                    </span>FR ES $ € £
-                </div>
-            </div>
-
+            <?php
+                include('footer.php');
+            ?>
         </div>
 
     </div>
-    <script>
-        $(document).ready(function() {
-            $(".add-to-cart").click(function() {
-                var productId = $(this).data("product-id");
-                var $image = $(this);
-
-                // Animation au clic
-                $image.animate({
-                    width: '80%',
-                    height: '80%'
-                }, 150, function() {
-                    // Effectuer l'ajout au panier
-                    $.ajax({
-                        type: "POST",
-                        url: "add_to_cart.php",
-                        data: {
-                            product_id: productId
-                        },
-                        success: function(response) {
-                            // Mettre à jour le nombre d'articles dans le panier
-                            $(".cart-items-count").text(response);
-
-                            // Animation de retour à la taille d'origine
-                            $image.animate({
-                                width: '100%',
-                                height: '100%'
-                            }, 150);
-                        }
-                    });
-                });
-            });
-        });
-
-        const slider = document.getElementById('price-slider');
-        const minPrice = document.getElementById('min-price');
-        const maxPrice = document.getElementById('max-price');
-
-        slider.addEventListener('input', updatePrices);
-
-        function updatePrices() {
-            const minValue = slider.min;
-            const maxValue = slider.max;
-            const currentValue = slider.value;
-
-            const priceRange = parseFloat(maxValue) - parseFloat(minValue);
-            const priceIncrement = parseFloat(currentValue) / priceRange;
-
-            const minPriceValue = 100;
-            const maxPriceValue = 10000;
-
-            const newMinPrice = minPriceValue + (priceIncrement * (maxPriceValue - minPriceValue));
-            const newMaxPrice = maxPriceValue;
-
-            minPrice.textContent = `$${newMinPrice}`;
-            maxPrice.textContent = `$${newMaxPrice}`;
-            const minValeur = `$${newMinPrice}`;
-            const maxValeur = `$${newMaxPrice}`;
-
-        }
-
-
-
-        /// Script pour la gestion des cases à cocher (marques)
-        const brandCheckboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
-        brandCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const selectedBrands = getSelectedBrands();
-                const minValue = 100;
-                const maxValue = 1000;
-                //const selectedColor = getSelectedColor(); // Obtenez la couleur sélectionnée
-                updateFilteredProducts(selectedBrands);
-            });
-        });
-        // Script pour la gestion de la couleur sélectionnée
-        const colorOptions = document.querySelectorAll('.color-option');
-        colorOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const selectedColor = this.style.backgroundColor;
-                colorOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                const selectedBrands = getSelectedBrands();
-                updateFilteredProducts(minValue, maxValue, selectedBrands);
-            });
-        });
-
-        // Fonction pour obtenir les marques sélectionnées
-        function getSelectedBrands() {
-            const selectedBrands = Array.from(brandCheckboxes)
-                .filter(checkbox => checkbox.checked)
-                .map(checkbox => checkbox.value);
-            return selectedBrands.join(',');
-        }
-
-        // Fonction pour obtenir la couleur sélectionnée
-        function getSelectedColor() {
-            const selectedColor = Array.from(colorOptions)
-                .find(option => option.classList.contains('selected'))
-                .style.backgroundColor;
-            return selectedColor;
-        }
-
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(window.location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-
-        // Fonction pour mettre à jour les produits filtrés via AJAX
-        function updateFilteredProducts(minValue = 100, maxValue = 10000, selectedBrands) {
-            const category = getUrlParameter('category'); // Récupérez la catégorie depuis l'URL
-            const type = getUrlParameter('type'); // Récupérez le type depuis l'URL
-
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET',
-                `produits.php?min=${minValue}&max=${maxValue}&category=${category}&type=${type}&brands=${selectedBrands}`,
-                true);
-
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const products_ = document.getElementById('products_');
-                    products_.innerHTML = xhr.responseText;
-                }
-            };
-
-            xhr.send();
-        }
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const imageContainers = document.querySelectorAll('.image-container');
-
-            imageContainers.forEach(function(container) {
-                const image = container.querySelector('img');
-
-                container.addEventListener('mouseover', function() {
-                    image.classList.add('zoom-image');
-                });
-
-                container.addEventListener('mouseout', function() {
-                    image.classList.remove('zoom-image');
-                });
-            });
-        });
-
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const typeInput = document.getElementById('type-input');
-            const suggestionsDatalist = document.getElementById('suggestions');
-            
-            typeInput.addEventListener('input', function() {
-                const userInput = typeInput.value;
-
-                // Envoyer une requête au serveur pour obtenir les suggestions
-                fetch('obtenir_suggestions.php') // Le chemin vers votre script PHP
-                    .then(response => response.json())
-                    .then(data => {
-                        const filteredSuggestions = data.filter(suggestion =>
-                            suggestion.type_categorie.toLowerCase().includes(userInput
-                                .toLowerCase()) ||
-                            suggestion.name.toLowerCase().includes(userInput.toLowerCase())
-                        );
-
-                        // Remplacer le contenu du datalist avec les suggestions filtrées
-                        suggestionsDatalist.innerHTML = '';
-                        filteredSuggestions.forEach(suggestion => {
-                            const option = document.createElement('option');
-                            option.value = suggestion.type_categorie + '  ' + suggestion
-                                .name;
-                            suggestionsDatalist.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Erreur lors de la récupération des suggestions', error);
-                    });
-            });
-        });
-    </script>
+   
+    <script type="text/javascript" src="js/index.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

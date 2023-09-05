@@ -2,6 +2,10 @@ body{
 	font-size : 15px;
 }
 
+a {
+	text-decoration: none;
+}
+
 div#top{
 	clear : both;
 	height : 70px;
@@ -274,3 +278,4 @@ background-color : #CDD1D5;
     transform: scale(1.2); /* Ajustez la valeur pour contrôler le niveau de zoom */
     transition: transform 0.3s ease; /* Ajoute une transition fluide */
 }
+
